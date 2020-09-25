@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary my-3" [routerLink]="['/people-list']">Back</button>
+            <hr>
+            <h1>Add User</h1>
+        </div>
+    </div>
+    <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="firstname">Firstname :</label>
+                <input type="text" name="firstname" id="firstname" formControlName="firstname" class="form-control">
+                <div *ngIf="firstname.touched && firstname.invalid">
+                    <small *ngIf="firstname.errors.required" class="text-danger">Firstname is required<br></small>
+                    <small *ngIf="firstname.errors.pattern" class="text-danger">Invalid Firstname<br></small>
+                    <small *ngIf="firstname.errors.minlength" class="text-danger">Firstname must contain two characters at least</small>
+                </div>
+            </div>
+
+            <div class="form-group col-6">
+                <label for="lastname">Lastname :</label>
+                <input type="text" name="lastname" id="lastname" formControlName="lastname" class="form-control">
+                <div *ngIf="lastname.touched && lastname.invalid">
+                    <small *ngIf="lastname.errors.required" class="text-danger">Lastname is required<br></small>
+                    <small *ngIf="lastname.errors.pattern" class="text-danger">Invalid Lastname<br></small>
+                    <small *ngIf="lastname.errors.minlength" class="text-danger">Lastname must contain two characters at least</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="email">email :</label>
+                <input  type="email" name="email" id="email" formControlName="email" class="form-control">
+                <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                    <small *ngIf="email.errors?.required" class="text-danger"> email is required</small>
+                    <small *ngIf="email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col">
+                <input type="submit" value="Add User" [disabled]="addUserForm.invalid" class="btn btn-info">
+            </div>
+        </div>
+
+    </form>
+</div>
