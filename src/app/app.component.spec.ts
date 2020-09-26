@@ -1,6 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from 'protractor';
+import { AddUserComponent } from './add-user/add-user.component';
 import { AppComponent } from './app.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -32,4 +35,18 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('HelloWorld app is running!');
   });
+  describe('PersonComponent', () => {
+    let component: AddUserComponent;
+    let fixture: ComponentFixture<AddUserComponent>;
+  
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [AddUserComponent]
+      });
+      fixture = TestBed.createComponent(AddUserComponent);
+      component = fixture.componentInstance;
+    });
+  
+
+});
 });
